@@ -15,16 +15,15 @@ const PostContextProvider = ({children}) => {
 
     const createPost = async (post) => {
         const res = await createPostRequests(post);
-        console.log(res)
+        setPosts([...posts, res.data])
     }
 
     useEffect(() => {
         getPosts()
-        createPost()
     }, [])
 
     return (
-        <PostContext.Provider value={{posts}}>
+        <PostContext.Provider value={{posts, getPosts, createPost}}>
             {children}
         </PostContext.Provider>
     )

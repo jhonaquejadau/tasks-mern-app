@@ -1,19 +1,14 @@
 import React, {useContext} from "react";
+import { Link } from "react-router-dom";
+
 import { PostContextConsumer } from "../context/PostsContext";
+import { PostCards } from "../components/PostsCards";
+
 import {VscEmptyWindow} from "react-icons/vsc"
 import {FaSadTear} from "react-icons/fa"
 
 export const Posts = () => {
     const {posts} = useContext(PostContextConsumer);
-
-    const postCards = posts.map(post => {
-        return (
-            <div key={post._id} className="flex flex-col justify-center items-center gap-4 text-white border-2 rounded my-2 p-2">
-                <h2 className="text-[1.25rem] text-orange-600 font-bold text-center capitalize">{post.title}</h2>
-                <p className="text-[1rem]">{post.description}</p>
-            </div>
-        )
-    })
 
     if(posts.length === 0) return (
         <div className="flex flex-col justify-center items-center w-full h-full ">
@@ -26,9 +21,19 @@ export const Posts = () => {
     )
 
     return (
-        <div >
-            <p className="text-4xl">POSTS</p>
-                {postCards}
+        <div className=" min-h-screen w-full flex flex-col items-center border-2 text-white">
+            <p className="text-4xl">CRUD Taks Application</p>
+            <Link to="/post-form">
+                <button className="my-8 text-sm capitalize rounded px-2 py-1 bg-gradient-to-r from-[#5f2c82] to-[#49a09d] hover:bg-gradient-to-l hover:scale-[1.04]">create new post</button>
+            </Link>
+            
+            <div className="w-[80%] h-[80%] grid grid-cols-3 gap-2">
+                {
+                    posts.map(post => (
+                        <PostCards post={post} key={post._id}/>
+                    ))
+                }
+            </div>
         </div>
     )
 }
