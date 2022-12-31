@@ -1,14 +1,8 @@
-import express from "express"
-import postsRoutes from "./routes/posts.routes.js"
 import { connectDB } from "./database.js";
 import { PORT } from "./config.js";
+import app from "./app.js";
 
-const app = express();
-
-
+// Our index.js just execute our code importing necessary files to work
 connectDB();
-
-app.use(postsRoutes)
-app.use(express.json())
 app.listen(PORT)
 console.log(`Server is running port ${PORT}`)

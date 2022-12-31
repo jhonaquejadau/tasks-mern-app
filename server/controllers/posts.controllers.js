@@ -1,39 +1,66 @@
+import Post from "../models/Post.js"
+
+
 // Functions to render requests in our server with error handlding
-const getPost = (req, res) => {
+/* Concepts
+* req.body ---> all data that our client send us
+*/
+const getPost = async (req, res) => {
+    
     try {
-        return res.send('GETTING POSTS')
+        const posts = await Post.find(); 
+        
+        return res.send(posts)
     }catch (error){
-        console.log(error)
-        return error.message
+        return res.status(500).json({message: error.message})
+    }
+}
+
+const getOnePost = async (req, res) => {
+    
+    try{
+        const onePost = await Post.findById(req.params.id)
+        
+        return onePost ? res.sendStatus(204) : res.sendStatus(404);
+    }catch(error) {
+        return res.status(500).json({message: error.message})
+    }
+}
+
+const createPost = async (req, res) => {
+
+    try {
+        // Here we destructure our req.body with the data that our client is going to send
+        const {title, description} = req.body;
+        const newPost = new Post({title, description}) 
+        await newPost.save()
+        
+        return res.json(newPost)
+    }catch (error){
+        return res.status(500).json({message: error.message})
     }
     
 }
-const createPost = (req, res) => {
+const updatePost = async (req, res) => {
+    
     try {
-        return res.send('CREATING POSTS')
+        // We need to receive the id because the client can update title or description or both of them.
+        const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        
+        return res.send(updatedPost)
     }catch (error){
-        console.log(error)
-        return error.message
+        return res.status(500).json({message: error.message})
     }
-
 }
-const updatePost = (req, res) => {
+const deletePost = async (req, res) => {
     try {
-        return res.send('UPDATING POSTS')
+        // We can do the same that we did in updatedPost function here in deletePost, just change property findByIdAndUpdate to findByIdAndRemove
+        const deletedPost = await Post.findByIdAndDelete(req.params.id)
+        
+        return deletedPost ? res.sendStatus(204) : res.sendStatus(404)
     }catch (error){
-        console.log(error)
-        return error.message
+        return res.status(500).json({message: error.message})
     }
-
-}
-const deletePost = (req, res) => {
-    try {
-        return res.send('DELETING POSTS')
-    }catch (error){
-        console.log(error)
-        return error.message
-    }
-
 }
 
-export {getPost, createPost, updatePost, deletePost}
+export {getPost, getOnePost, createPost, updatePost, deletePost}
