@@ -1,15 +1,21 @@
-import React, {useContext} from "react";
-import { useNavigate } from "react-router-dom";
+import React, {useContext, useState} from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { PostContextConsumer } from "../context/PostsContext";
 import {Formik, Form, Field, ErrorMessage} from "formik"
 import * as Yup from "yup"
-
-
-import { PostContextConsumer } from "../context/PostsContext";
+import { useEffect } from "react";
 
 export const PostForm = () => {
     
-    const {createPost} = useContext(PostContextConsumer);
+    const {createPost, getOnePost} = useContext(PostContextConsumer);
+    const params = useParams();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if(params.id){
+            getOnePost(params.id)
+        }
+    }, [])
 
     return (
         <div className="w-full min-h-screen bg-orange-500">

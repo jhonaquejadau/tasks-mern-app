@@ -1,11 +1,13 @@
 import React, {useContext} from "react";
 import toast from "react-hot-toast"
+import { useNavigate } from "react-router-dom";
 
 import { PostContextConsumer } from "../context/PostsContext";
 
 export const PostCards = ({post}) => {
 
     const {deletePost} = useContext(PostContextConsumer);
+    const navigate = useNavigate();
 
     const handleDelete = (postId) => {
         toast((t) => (
@@ -35,7 +37,7 @@ export const PostCards = ({post}) => {
             <p className="text-justify text-[200] mt-4 mb-8">{post.description}</p>
             <div className="flex flex-row justify-center gap-4">
                 <button onClick={() => handleDelete(post._id)} className="text-sm bg-gradient-to-r from-[#EC6F66] to-[#F3A183] rounded-sm px-2 py-1 hover:bg-gradient-to-l hover:scale-[1.04] capitalize">delete</button>
-                <button className="text-sm bg-gradient-to-r from-[#7474BF] to-[#348AC7] rounded-sm px-2 py-1 hover:bg-gradient-to-l hover:scale-[1.04] capitalize">update</button>
+                <button onClick={() => navigate(`/posts/${post._id}`)} className="text-sm bg-gradient-to-r from-[#7474BF] to-[#348AC7] rounded-sm px-2 py-1 hover:bg-gradient-to-l hover:scale-[1.04] capitalize">update</button>
             </div>
         </div>
     )
