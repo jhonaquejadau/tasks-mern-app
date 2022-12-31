@@ -21,7 +21,7 @@ const getOnePost = async (req, res) => {
     try{
         const onePost = await Post.findById(req.params.id)
         
-        return onePost ? res.sendStatus(204) : res.sendStatus(404);
+        return onePost ? res.json(onePost) : res.sendStatus(404);
     }catch(error) {
         return res.status(500).json({message: error.message})
     }
