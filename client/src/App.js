@@ -1,6 +1,9 @@
 import { Posts } from "./pages/Posts";
 import { PostForm } from "./pages/PostForm";
+import {NotFoundPage} from "./pages/NotFoundPage"
 import {Routes, Route} from "react-router-dom"
+
+import { Toaster } from "react-hot-toast";
 
 import './App.css';
 
@@ -10,7 +13,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Posts/>}/>
         <Route path="/post-form" element={<PostForm/>}/>
+        <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
+      <Toaster />
     </div>
   );
 }
