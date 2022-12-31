@@ -1,12 +1,19 @@
 import React from 'react';
+import { PostContextProvider } from './context/PostsContext';
+import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
-import App from './App';
+import App from './App.js';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+    <PostContextProvider>
+      <App />
+    </PostContextProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

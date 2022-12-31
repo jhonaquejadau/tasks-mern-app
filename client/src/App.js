@@ -1,9 +1,14 @@
+import { Posts } from "./pages/Posts";
+import {Routes, Route} from "react-router-dom"
+
 import './App.css';
 
 function App() {
   return (
-    <div>
-      <p>MY MERN APP</p>
+    <div className="bg-neutral-600 min-h-screen flex justify-center items-center">
+      <Routes>
+        <Route path="/" element={<Posts/>}/>
+      </Routes>
     </div>
   );
 }
