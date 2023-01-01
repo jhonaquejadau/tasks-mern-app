@@ -25,7 +25,7 @@ const PostContextProvider = ({children}) => {
 
     const getOnePost = async (id) => {
         const res = await getOnePostRequests(id)
-        console.log(res)
+        return res.data
     } 
 
     useEffect(() => {
