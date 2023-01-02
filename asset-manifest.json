@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tasks-mern-app/static/css/main.603a508d.css",
+    "main.js": "/tasks-mern-app/static/js/main.27a9f98d.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/tasks-mern-app/static/js/787.c4e7f8f9.chunk.js",
+    "index.html": "/tasks-mern-app/index.html",
+    "main.603a508d.css.map": "/tasks-mern-app/static/css/main.603a508d.css.map",
+    "main.27a9f98d.js.map": "/tasks-mern-app/static/js/main.27a9f98d.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/tasks-mern-app/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.603a508d.css",
+    "static/js/main.27a9f98d.js"
+  ]
+}
