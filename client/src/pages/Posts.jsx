@@ -17,6 +17,9 @@ export const Posts = () => {
                 <h1>Oooop... It seems like there are no posts yet!</h1>
                 <FaSadTear/>
             </div>
+            <Link to="/post-form">
+                <button className="my-8 text-sm capitalize rounded px-2 py-1 bg-gradient-to-r from-[#5f2c82] to-[#49a09d] hover:bg-gradient-to-l hover:scale-[1.04]">create post</button>
+            </Link>
         </div> 
     )
 
