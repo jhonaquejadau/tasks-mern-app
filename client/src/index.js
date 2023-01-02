@@ -9,10 +9,10 @@ import App from './App.js';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <PostContextProvider>
-      <App />
-    </PostContextProvider>
+    <BrowserRouter basename='/tasks-mern-app'>
+      <PostContextProvider>
+        <App />
+      </PostContextProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
